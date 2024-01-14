@@ -43,7 +43,7 @@ This node imports various modules, including rocpp for ROS functionality, action
 
 Defines the action_client function, which creates an action client that connects to an action server at the /reaching_goal topic. The function then enters a loop that ask the user to choose between three choices of sending target ,canceling it,or get the information about the robot if the user enter anything else than choices it exit.
 The PseudoCode of the this node can be the following :
-Define main function:
+Define main function for setting and canceling the targets:
 ```
     creating and initializing node
     Initialize the client that send a goal to the action server.
@@ -51,8 +51,8 @@ Define main function:
     While True:
         Ask the user to enter choice
         1. for sending goal
-        2. for canceling![Flowchart](https://github.com/younes-hebik/Research_Track-Second-Assignment/assets/150743556/4f73fc8e-16f4-4cfc-9844-ab4669222b86)
-
+        2. for canceling!
+        3-for getting information about position , state of robot
         If (choice = 1)
            Ask user to set target
            initializing the goal
@@ -60,10 +60,49 @@ Define main function:
            send robot to desired target
         elseif (choice = 2)
             cancelGoal
-elseif (choice = 3)
-     goalstatus
+        elseif (choice = 3)
+            goalstatus
         else 
             exit the program.
+```
+and for implementing the publisher  and the subscriber  
+```
+# Step 1: Define a custom message type for position and velocity
+class CustomPosVelMessage:
+    float32 position_x
+    float32 position_y
+    float32 velocity_linear
+
+# Step 2: Initialize the ROS node
+ros_node.initialize("position_velocity_node")
+
+# Step 3: Create a publisher for the custom_pos_vel topic
+custom_pos_vel_publisher = ros_node.create_publisher(CustomPosVelMessage, 'custom_pos_vel', 10)
+
+# Step 4: Define a callback function to handle incoming odom messages
+def odom_callback(odom_message):
+    # Step 5: Extract position and velocity information from the odom message
+    robot_position_x = odom_message.position_x
+    robot_position_y = odom_message.position_y
+    robot_velocity_linear = odom_message.velocity_linear
+
+    # Step 6: Create an instance of the custom message type
+    custom_pos_vel_message = CustomPosVelMessage()
+
+    # Step 7: Populate the custom message with position and velocity information
+    custom_pos_vel_message.position_x = robot_position_x
+    custom_pos_vel_message.position_y = robot_position_y
+    custom_pos_vel_message.velocity_linear = robot_velocity_linear
+
+    # Step 8: Publish the custom message on the custom_pos_vel topic
+    custom_pos_vel_publisher.publish(custom_pos_vel_message)
+
+# Step 9: Subscribe to the odom topic with the callback function
+ros_node.create_subscription(OdomMessage, 'odom', odom_callback)
+
+# Step 10: Enter a loop to keep the script running
+ros_node.spin()
+
 ```
 ![Flow chart](Flowchart.png)
 

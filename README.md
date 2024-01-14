@@ -134,3 +134,7 @@ Script Execution:
 
 Spin to handle ROS events and service requests.
 ```
+The Subscriber node (node_C):
+=============================
+
+It is a node that subscribes to the robot’s position and velocity using the custom message and prints the distance of the robot from the target and the robot’s average speed after reaching the goal.

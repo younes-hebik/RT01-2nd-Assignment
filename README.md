@@ -65,5 +65,5 @@ elseif (choice = 3)
         else 
             exit the program.
 ```
-![Flow chart]([URL](https://github.com/younes-hebik/Research_Track-Second-Assignment/blob/master/Flowchart.png)https://github.com/younes-hebik/Research_Track-Second-Assignment/blob/master/Flowchart.png)
+![Flow chart](Flowchart.png)
 

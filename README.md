@@ -1,7 +1,7 @@
 # Assignment 2 - RT1 ROS Nodes
 
 ## Overview
-This repository contains the solution for the second assignment of the RT1 course. The assignment involved the creation of ROS nodes in Python to perform specific tasks related to robot navigation and information retrieval.
+This repository contains the solution for the second assignment of the RT1 course. The assignment involved the creation of ROS nodes in C++ to perform specific tasks related to robot navigation and information retrieval.
 
 ## Nodes
 

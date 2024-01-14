@@ -106,3 +106,31 @@ ros_node.spin()
 ```
 ![Flow chart](Flowchart.png)
 
+Service node (node_B):
+-----------------------------
+
+This service node returns the coordinates of the last target sent by the user when called. It subscribes to the reaching_goal/goal topic to capture updates on the robot's target coordinates.
+```
+Steps:
+
+Initialization:
+
+Import ROS modules.
+Initialize the node.
+Variable Initialization:
+
+Initialize last_target_coordinates to None.
+Goal Topic Subscription:
+
+Subscribe to reaching_goal/goal.
+Define a callback (goal_callback) to store received target coordinates.
+Service Callback:
+
+Define a service callback (get_last_target_callback) to return stored coordinates.
+Service Creation:
+
+Create 'Last_Target' service with the callback.
+Script Execution:
+
+Spin to handle ROS events and service requests.
+```

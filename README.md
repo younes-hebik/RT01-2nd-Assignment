@@ -138,3 +138,28 @@ The Subscriber node (node_C):
 =============================
 
 It is a node that subscribes to the robot’s position and velocity using the custom message and prints the distance of the robot from the target and the robot’s average speed after reaching the goal.
+node subscribes to odom topic to get the position of the robot  and the velocity and subscribe to the goal position to know the destination ,for robot goal distance we calculate the difference of robot position and goal position and for the average speed i have created a loop that get 50 sample of velocity and calculate the average in that sample period 
+```
+while(ros::ok() ){
+  
+   
+   for(i=0;i<50;i++){
+//geting 50 sample of robot's speed and calculating the average
+   spd=spd+sqrt(speed_x*speed_x+speed_y*speed_y);
+   ros::spinOnce();
+   
+   }
+    spdf=spd/i;
+   i=0;
+   spd=0;
+//get the distance diffrence of goal and robot position on x and y 
+   dx=final_x-dis_x;
+   dy=final_y-dis_y;
+   d=sqrt((dx*dx)+(dy*dy));
+   //cout<<d;
+ 
+   }
+
+   ros::spinOnce()
+  }
+  ```

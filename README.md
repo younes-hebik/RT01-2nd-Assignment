@@ -165,3 +165,7 @@ while(ros::ok() ){
    ros::spinOnce()
   }
   ```
+Launch File
+============
+It provides a convenient way to start up multiple nodes and a master, as well as other initialization requirements such as setting parameters. I create a new launch file that contains the launching of the assignment package and my three nodes 
+you can launch the file using command line `roslaunch pkg-name 

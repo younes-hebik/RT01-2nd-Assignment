@@ -51,7 +51,8 @@ Define main function:
     While True:
         Ask the user to enter choice
         1. for sending goal
-        2. for canceling
+        2. for canceling![Flowchart](https://github.com/younes-hebik/Research_Track-Second-Assignment/assets/150743556/4f73fc8e-16f4-4cfc-9844-ab4669222b86)
+
         If (choice = 1)
            Ask user to set target
            initializing the goal

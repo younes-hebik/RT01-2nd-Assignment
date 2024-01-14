@@ -110,6 +110,7 @@ Service node (node_B):
 -----------------------------
 
 This service node returns the coordinates of the last target sent by the user when called. It subscribes to the reaching_goal/goal topic to capture updates on the robot's target coordinates.
+we can get the data by calling the service using command `rosservice call Last_Target`
 ```
 Steps:
 
@@ -139,6 +140,7 @@ The Subscriber node (node_C):
 
 It is a node that subscribes to the robot’s position and velocity using the custom message and prints the distance of the robot from the target and the robot’s average speed after reaching the goal.
 node subscribes to odom topic to get the position of the robot  and the velocity and subscribe to the goal position to know the destination ,for robot goal distance we calculate the difference of robot position and goal position and for the average speed i have created a loop that get 50 sample of velocity and calculate the average in that sample period 
+finally we advertise the data on server where we can call the server with command `rosservice call speed_distance`
 ```
 while(ros::ok() ){
   

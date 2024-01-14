@@ -9,10 +9,12 @@ This repository contains the solution for the second assignment of the RT1 cours
 - Allows a user to input a target position for a robot to navigate to.
 - Supports canceling the operation and reassigning a new target destination.
 - Implemented using an action client.
-
-### 2. Node_A2
 - Publishes the robot's position and velocity as a custom message.
 - Utilizes values from the `/odom` topic.
+
+### 2. Node_B
+- Publish the last target coordinates with service message
+- Utilizes values from the `/goal` topic.
 
 ### 3. Node_C (Service Node)
 - Subscribes to the robot’s position and velocity.
